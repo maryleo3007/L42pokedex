@@ -13,17 +13,27 @@ const render = (root) => {
 
 const state = {
     pokemons: null,
+    species: null,
     status: null
 }
 
 $(_ => {
 
-  getJSON('pokemons.json',(err,json) =>{
+  getJSON('http://pokeapi.co/api/v2/pokedex/1/',(err,json) =>{
     if (err) {return alert(err.message);}
-    state.pokemons = json;
-
+    state.pokemons = json.pokemon_entries;
+    console.log(json);
     const root = $('#root');
     render(root);
   });
-  // implementar el get json
+
+  // getJSON('http://pokeapi.co/api/v2/pokemon-species/2/',(err,json) =>{
+  //   if (err) {return alert(err.message);}
+  //   state.species = json.flavors_text_entries;
+  //   console.log(json);
+  //
+  //   const root = $('#root');
+  //   render(root);
+  // });
+
 });

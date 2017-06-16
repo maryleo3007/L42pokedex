@@ -1,0 +1,47 @@
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+header{
+  color: #e84848;
+}
+.pokeimg{
+  height: 150px;
+  margin-bottom: 7px;
+  margin-top: 14px;
+}
+.figpoke{
+  width: 140px;
+  /*height: 100px;*/
+  margin: 0 auto;
+}
+.contentPoke{
+  background-color: #dbdbdb;
+  width: 264px;
+  margin-top: 20px;
+  margin-left: 10px;
+  border-radius: 10px;
+}
+.containerspan {
+width: 220px;
+height: 40px;
+display: flex;
+justify-content: center;
+border-left: 15px solid transparent;
+border-right: 15px solid transparent;
+border-bottom: 40px solid #fff;
+margin: 0 15px;
+border-radius:  50px 50px  0px 0px;
+}
+#pcolection{
+  background-color: #fff;
+}
+.containerspan img{
+  width: 20px;
+  height: 20px;
+  margin-top: 14px;
+}
+#myModal{
+  cursor: pointer;
+}
