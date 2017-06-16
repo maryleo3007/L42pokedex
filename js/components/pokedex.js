@@ -5,7 +5,7 @@ const pokeItem = (pokemon,update) => {
   const colcontainer = $('<div class="col-md-3"></div>');
   const divcontentPoke = $('<div class="contentPoke"></div>');
   const figure = $('<div class="figpoke"></div>');
-  const a = $('<a ></a>');
+  const a = $('<a data-toggle="modal" data-target="#myModal"></a>');
   const img = $('<img class="pokeimg center" src="http://serebii.net/art/th/'+pokemon.entry_number+'.png">');
 
   figure.append(a);
@@ -29,43 +29,16 @@ const pokeItem = (pokemon,update) => {
   divcontentPoke.append(figure);
   divcontentPoke.append(div);
   divcontentPoke.append(pcolection);
-
-  const modalfade = $('<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">  </div>');
-  const modalDialog = $('<div class="modal-dialog" role="document"></div>');
-  const modalContent = $('<div class="modal-content"></div>');
-  const modalHeader = $('<div class="modal-header"></div>');
-  const modalBody = $('<div class="modal-body"></div>');
-  const modalFooter = $('<div class="modal-footer">s,ndsdc,sdnc</div>');
-
-  modalfade.append(modalDialog);
-  modalDialog.append(modalContent);
-  modalContent.append(modalHeader);
-  modalContent.append(modalBody);
-  modalContent.append(modalFooter);
-
-  const buttonclose = $('<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>');
-  const h4modalTitle = $('<h4 class="modal-title" id="myModalLabel">Modal title</h4>');
-
-  modalHeader.append(buttonclose);
-  modalHeader.append(h4modalTitle);
-
-  const description = $('<div></div>')
-  const textDescription = $('<p>'+pokemon.species+'</p>');
-
-  // divcontentPoke.append(modalfade);
-  //$('#myModal').modal();
-
-  // a.on('click', _ => {
-  //   // getJSON('http://pokeapi.co/api/v2/pokemon-species/2/'
-  //   getJSON('http://pokeapi.co/api/v2/pokemon-species/'+pokemon.entry_number+'/',(err,json) =>{
-  //     if (err) {return alert(err.message);}
-  //     state.species = json.flavors_text_entries.flavor_text;
-  //
-  //     const root = $('#root');
-  //     render(root);
-  //   });
-  //   update();
-  // });
+  colcontainer.append(divnmbre);
+  divnmbre.append(PokedexDetails());
+  a.on('click',function () {
+    console.log(pokemon.pokemon_species.url);
+    $.get(pokemon.pokemon_species.url,(data) => {
+       let valor = data.flavor_text_entries[3].flavor_text;
+      $('.modal-content').html(valor);
+      $('.modal-content').html($('.modal-content').append(colcontainer));
+     })
+  });
 
 
   return colcontainer;
