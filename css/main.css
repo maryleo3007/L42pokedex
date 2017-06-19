@@ -48,3 +48,18 @@ border-radius:  50px 50px  0px 0px;
 .figpoke a{
   cursor: pointer;
 }
+.modal-header{
+  border-bottom: none;
+}
+.container-modal {
+    padding-left: 135px;
+    padding-right: 135px;
+}
+.modal-content{
+    background-color: #edecec;
+}
+@media (min-width: 768px){
+.modal-dialog {
+    width: 90%;
+    margin: 49px auto;
+}

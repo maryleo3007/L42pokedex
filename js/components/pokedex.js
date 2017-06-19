@@ -31,17 +31,36 @@ const pokeItem = (pokemon,update) => {
   divcontentPoke.append(pcolection);
   colcontainer.append(divnmbre);
   divnmbre.append(PokedexDetails());
+
+  let doublePoke = colcontainer.map((x)=>{ return x});
   a.on('click',function () {
-    console.log(pokemon.pokemon_species.url);
+
+    $('.pokecolContainer').html("");
+    $('.pdescription').html("");
+    $('.altura').html("");
+    $('.peso').html("");
+    $('.categoria').html("");
+    $('.habilidad').html("");
+    $('.tipoPoke1').html("");
+    $('.tipoPoke2').html("");
+
     $.get(pokemon.pokemon_species.url,(data) => {
-       let valor = data.flavor_text_entries[3].flavor_text;
-      $('.modal-content').html(valor);
-      $('.modal-content').html($('.modal-content').append(colcontainer));
+      console.log(data);
+      let pokemon = doublePoke.prevObject[0];
+      let valor = data.flavor_text_entries[3].flavor_text;
+      $('.pokecolContainer').html(pokemon);
+      $('.pdescription').html(valor);
+      $('.altura').html(pokemon.pokemon_species.height);
+      $('.peso').html(pokemon.pokemon_species.weight);
+      $('.categoria').html(pokemon.pokemon_species.shape.name);
+      $('.habilidad').html(pokemon.abilities.name);
+      $('.tipoPoke1').html(pokemon.types[0].type.name);
+      $('.tipoPoke2').html(pokemon.types[1].type.name);
+
      })
   });
 
-
-  return colcontainer;
+return colcontainer;
 }
 
 const PokeGrid = (update) => {
